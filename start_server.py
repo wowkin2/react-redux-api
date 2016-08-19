@@ -17,14 +17,53 @@ def courses_handler():
 
     if request.method == 'POST':
         new_course = request.form.to_dict()
-        new_course['id'] = int(time.time() * 1000)
-        courses.append(new_course)
+        if new_course.get('id'):
+            if new_course.get('id') in courses.values():
+                # Update existing
+                for course in courses:
+                    if course['id'] == new_course['id']:
+                        course.update(new_course)
+                        break
+            else:
+                # Add new
+                courses.append(new_course)
 
         with open('courses.json', 'w') as f:
             f.write(json.dumps(courses, indent=4, separators=(',', ': ')))
 
     return Response(
         json.dumps(courses),
+        mimetype='application/json',
+        headers={
+            'Cache-Control': 'no-cache',
+            'Access-Control-Allow-Origin': '*'
+        }
+    )
+
+
+@app.route('/api/authors', methods=['GET', 'POST'])
+def authors_handler():
+    with open('authors.json', 'r') as f:
+        authors = json.loads(f.read())
+
+    if request.method == 'POST':
+        new_author = request.form.to_dict()
+        if new_author.get('id'):
+            if new_author.get('id') in authors.values():
+                # Update existing
+                for author in authors:
+                    if author['id'] == new_author['id']:
+                        author.update(new_author)
+                        break
+            else:
+                # Add new
+                authors.append(new_author)
+
+        with open('authors.json', 'w') as f:
+            f.write(json.dumps(authors, indent=4, separators=(',', ': ')))
+
+    return Response(
+        json.dumps(authors),
         mimetype='application/json',
         headers={
             'Cache-Control': 'no-cache',

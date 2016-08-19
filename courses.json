@@ -1,1 +1,50 @@
-{}
+[
+    {
+        "id": "python-api-development",
+        "category": "Python",
+        "length": "0:00",
+        "watchHref": "https://github.com/wowkin2/react-redux-api",
+        "authorId": "wowkin2",
+        "title": "Python API development"
+    },
+    {
+        "id": "react-flux-building-applications",
+        "category": "JavaScript",
+        "length": "5:08",
+        "watchHref": "http://www.pluralsight.com/courses/react-flux-building-applications",
+        "authorId": "cory-house",
+        "title": "Building Applications in React and Flux"
+    },
+    {
+        "id": "clean-code",
+        "category": "Software Practices",
+        "length": "3:10",
+        "watchHref": "http://www.pluralsight.com/courses/writing-clean-code-humans",
+        "authorId": "cory-house",
+        "title": "Clean Code: Writing Code for Humans"
+    },
+    {
+        "id": "architecture",
+        "category": "Software Architecture",
+        "length": "2:52",
+        "watchHref": "http://www.pluralsight.com/courses/architecting-applications-dotnet",
+        "authorId": "cory-house",
+        "title": "Architecting Applications for the Real World"
+    },
+    {
+        "id": "career-reboot-for-developer-mind",
+        "category": "Career",
+        "length": "2:30",
+        "watchHref": "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
+        "authorId": "cory-house",
+        "title": "Becoming an Outlier: Reprogramming the Developer Mind"
+    },
+    {
+        "id": "web-components-shadow-dom",
+        "category": "HTML5",
+        "length": "5:10",
+        "watchHref": "http://www.pluralsight.com/courses/web-components-shadow-dom",
+        "authorId": "cory-house",
+        "title": "Web Component Fundamentals"
+    }
+]
