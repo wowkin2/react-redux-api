@@ -1,7 +1,7 @@
 from flask_restful import reqparse, abort, Resource
 
 from common import api, db
-from constants import HttpStatus
+from constants import HttpStatus, EMPTY_JSON
 from helpers import handle_bson
 
 COLL_COURSES = 'courses'
@@ -19,7 +19,7 @@ course_parser.add_argument('length')
 class Course(Resource):
     @staticmethod
     def get(course_id):
-        course = db[COLL_COURSES].find_one({id: course_id})
+        course = db[COLL_COURSES].find_one({'id': course_id})
         if course:
             return handle_bson(course), HttpStatus.OK
         else:
@@ -27,8 +27,8 @@ class Course(Resource):
 
     @staticmethod
     def delete(course_id):
-        db[COLL_COURSES].remove({id: course_id}, multi=False)
-        return '', HttpStatus.NO_CONTENT
+        db[COLL_COURSES].remove({'id': course_id}, multi=False)
+        return EMPTY_JSON, HttpStatus.NO_CONTENT
 
     @staticmethod
     def post():
@@ -58,7 +58,7 @@ class Course(Resource):
             'title': args.get('title'),
             'length': args.get('length'),
         }
-        db[COLL_COURSES].update_one({id: course_id}, course, upsert=True)
+        db[COLL_COURSES].update_one({'id': course_id}, course, upsert=True)
         return handle_bson(course), HttpStatus.OK
 
 
