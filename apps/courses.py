@@ -58,7 +58,7 @@ class Course(Resource):
             'title': args.get('title'),
             'length': args.get('length'),
         }
-        db[COLL_COURSES].update_one({'id': course_id}, course, upsert=True)
+        db[COLL_COURSES].update_one({'id': course_id}, {'$set': course}, upsert=True)
         return handle_bson(course), HttpStatus.OK
 
 

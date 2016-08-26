@@ -50,7 +50,7 @@ class Author(Resource):
             'firstName': args.get('firstName'),
             'lastName': args.get('lastName')
         }
-        db[COLL_AUTHORS].update_one({'id': author_id}, author, upsert=True)
+        db[COLL_AUTHORS].update_one({'id': author_id}, {'$set': author}, upsert=True)
         return handle_bson(author), HttpStatus.OK
 
 

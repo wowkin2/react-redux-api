@@ -12,7 +12,7 @@ class JSONEncoder(json.JSONEncoder):
 def handle_bson(value):
     if type(value) == list:
         for item in value:
-            item['_id'] = str(item['_id'])
+            item['_id'] = str(item.get('_id'))
     elif type(value) == dict:
-        value['_id'] = str(value['_id'])
+        value['_id'] = str(value.get('_id'))
     return value
